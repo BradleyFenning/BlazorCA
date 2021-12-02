@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\Bradley\OneDrive - Technological University Dublin\semester7\EAD\CAs\CA3\BlazorCA3\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\Bradley\OneDrive - Technological University Dublin\semester7\EAD\CAs\CA3\BlazorCA3\obj\Debug\net5.0\scopedcss\bundle\" />
+</StaticWebAssets>
