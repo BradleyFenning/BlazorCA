@@ -1,0 +1,84 @@
+﻿@page "/DetailGame"
+@page "/DetailGame/{GAMEID}"
+@inject HttpClient Http
+@using System.Runtime.Serialization;
+@using Newtonsoft.Json;
+@using BlazorCA3;
+
+<h3>Game Detail</h3>
+<h3>@strfeedback</h3>
+
+
+@if (found)
+{
+    <h1>@gameData.info.title</h1>
+    <img src="@gameData.info.thumb" />
+    <h2>Cheapest Price</h2>
+    <h4>Date:@(UnixTimeStampToDateTime(gameData.cheapestPriceEver.date).ToLongDateString())  Price: € @gameData.cheapestPriceEver.price</h4>
+
+
+    <h2>Current Deals</h2>
+    <div class="col-sm border rounded" style="border-color:darkgray; background-color:aqua">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Store Id</th>
+                    <th>Deal ID</th>
+                    <th>Deal Price</th>
+                    <th>Retail Price</th>
+                    <th>Savings</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Deal d in gameData.deals)
+                {
+                <tr>
+                    <td>@d.storeID</td>
+                    <td><a href="/DealPrice/@d.dealID">@d.dealID</a></td>
+                    <td>€@d.price</td>
+                    <td>€@d.retailPrice</td>
+                    <td>@d.savings %</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@strfeedback
+
+@code {
+
+    [Parameter]
+    public string GAMEID { get; set; }
+
+
+    string strfeedback;
+    private bool found;
+
+    private GameDetail gameData;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            gameData = await Http.GetFromJsonAsync<GameDetail>("https://www.cheapshark.com/api/1.0/games?id=" + GAMEID);
+            found = true;
+            strfeedback = String.Empty;
+
+        }
+        catch (Exception e)
+        {
+            found = false;
+            strfeedback = e.Message;
+        }
+    }
+
+    public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+    {
+        // The unix timestamp is how many seconds since the epoch time
+        // so just substract
+        var epochDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        epochDateTime = epochDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+        return epochDateTime;
+    }
+}
+

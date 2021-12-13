@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YbnXjtz3ks0LBORfBrnLh0pw7jUKIeOLjLvCj7MAaaTFaHmzQL6rk3cb2STgiVkuSzFBcmv4fU+nzWR0aTvCcg==",
+  "dgSpecHash": "+hym945YEvZf59Iad4ASayqgDRbO9oXh9eHrFkCE5/RLqkUhbeuhkfurGH9U7XgO8z2Hq/cnqW/57AHyIqDeKg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bradley\\OneDrive - Technological University Dublin\\semester7\\EAD\\CAs\\CA3\\BlazorCA3\\BlazorCA3.csproj",
   "expectedPackageFiles": [
@@ -28,9 +28,14 @@
     "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.jsinterop\\5.0.10\\microsoft.jsinterop.5.0.10.nupkg.sha512",
     "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.jsinterop.webassembly\\5.0.10\\microsoft.jsinterop.webassembly.5.0.10.nupkg.sha512",
+    "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.0.0\\microsoft.testplatform.objectmodel.17.0.0.nupkg.sha512",
+    "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.testplatform.testhost\\17.0.0\\microsoft.testplatform.testhost.17.0.0.nupkg.sha512",
+    "C:\\Users\\Bradley\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Bradley\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\Bradley\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\Bradley\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.10\\microsoft.netcore.app.runtime.browser-wasm.5.0.10.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
+    "C:\\Users\\Bradley\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.12\\microsoft.netcore.app.runtime.browser-wasm.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

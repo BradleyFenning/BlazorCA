@@ -1,7 +1,79 @@
 ﻿@page "/"
+@inject HttpClient Http
+@using System.Runtime.Serialization;
+@using Newtonsoft.Json;
+@inject NavigationManager UriHelper
 
-<h1>Hello, world!</h1>
+<h3>Game Title Search</h3>
+<h3>@strfeedback</h3>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="col col-sm" style="border-color:black; border-radius:10px">
+    <label for="gameName">Game Search</label>
+    <input id="gameName" @bind="gameName" />
+    <button class="btn-outline-warning" @onclick="ButtononClick">Search</button>
+
+</div>
+<br />
+
+@if (found)
+{
+    <div class="col-sm border rounded" style="border-color:darkgray; background-color:aqua">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Game Id</th>
+                    <th>Game Name</th>
+                    <th>Image</th>
+                    <th>Cheapest Price</th>
+                    <th>Cheapest Price Deal ID</th>
+                    <th>Steam App ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (GameName g in gamesList)
+                {
+                    <tr>
+                        <td><a href="/DetailGame/@g.gameID">@g.gameID</a></td>
+                        <td>@g.internalName</td>
+                        <td><img src="@g.thumb" /></td>
+                        <td>€@g.cheapest</td>
+                        <td>@g.cheapestDealID</td>
+                        <td>@g.steamAppID</td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@strfeedback
+
+@code {
+    string strfeedback;
+    private string gameName;
+    private bool found;
+    private string GAMEID;
+
+    private List<GameName> gamesList = new List<GameName>();
+    private async Task ButtononClick()
+    {
+        try
+        {
+            gamesList = await Http.GetFromJsonAsync<List<GameName>>("https://www.cheapshark.com/api/1.0/games?title=" + gameName);
+            found = true;
+            strfeedback = String.Empty;
+        }
+        catch (Exception e)
+        {
+            found = false;
+            strfeedback = e.Message;
+        }
+    }
+
+    public void gameNav(string gID)
+    {
+        UriHelper.NavigateTo($"DetailGame/{gID}");
+    }
+}

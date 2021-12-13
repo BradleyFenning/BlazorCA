@@ -1,0 +1,59 @@
+﻿@page "/stores"
+@inject HttpClient Http
+@using System.Runtime.Serialization;
+@using Newtonsoft.Json;
+@using BlazorCA3.Pages;
+
+<h3>All Stores</h3>
+<h3>@strfeedback</h3>
+
+
+@if (found)
+{
+    <div class="col-sm border rounded" style="border-color:darkgray; background-color:aqua">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Store Id</th>
+                    <th>Store Name</th>
+                    <th>Logo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (StoreName s in StoreList)
+                {
+                    string logos = "https://www.cheapshark.com/" + @s.images.logo;
+                    <tr>
+                        <td>@s.storeID</td>
+                        <td>@s.storeName</td>
+                        <td><img src="@logos" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+@strfeedback
+
+@code {
+    string strfeedback;
+    private string gameName;
+    private bool found;
+
+    private List<StoreName> StoreList = new List<StoreName>();
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            StoreList = await Http.GetFromJsonAsync<List<StoreName>>("https://www.cheapshark.com/api/1.0/stores");
+            found = true;
+            strfeedback = String.Empty;
+            Console.WriteLine(StoreList[0].storeID);
+        }
+        catch (Exception e)
+        {
+            found = false;
+            strfeedback = e.Message;
+        }
+    }
+}

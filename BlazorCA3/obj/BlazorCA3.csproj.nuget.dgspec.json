@@ -54,6 +54,14 @@
               "target": "Package",
               "version": "[5.0.10, )"
             },
+            "Microsoft.TestPlatform.TestHost": {
+              "target": "Package",
+              "version": "[17.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "System.Net.Http.Json": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -72,7 +80,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-              "version": "[5.0.10, 5.0.10]"
+              "version": "[5.0.12, 5.0.12]"
             }
           ],
           "frameworkReferences": {
@@ -80,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
